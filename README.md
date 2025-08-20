@@ -47,17 +47,17 @@ project-root/
 ### 🔹 **Model (Schema)**
 - Defines the shape of data stored in MongoDB
 - **Why?** → Prevents junk data, enforces consistency
-- **Example:** User schema with name, email, password
+- **Example:** Product schema with name, description and price
 
 ### 🔹 **Controller**
 - Handles business logic for each route
 - **Why?** → Keeps code clean & reusable
-- **Example:** createUser() function for user registration
+- **Example:** createProduct() function for product
 
 ### 🔹 **Router**
 - Defines endpoints (URLs) and maps them to controllers
-- **Why?** → Keeps server.js clean and modular
-- **Example:** router.post("/register", createUser)
+- **Why?** → Keeps index.js clean and modular
+- **Example:** router.post("/createProduct", createProduct)
 
 ### 🔹 **Server (Entry Point)**
 - Bootstraps the app: loads middlewares, connects DB, starts Express server
@@ -80,7 +80,7 @@ project-root/
 
 ### Clone Repository
 ```bash
-git clone <repository-url>
+`git clone https://github.com/Rajeevkumar69/products-management-api`
 cd project-folder
 ```
 
@@ -129,22 +129,22 @@ import express from "express";
 ```javascript
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String, unique: true },
-  password: { type: String, required: true }
+  description: { type: String, unique: true },
+  price: { type: String, required: true }
 });
 
-export default mongoose.model("User", userSchema);
+export default mongoose.model("product", productSchema);
 ```
 
 ### 🔹 Step 2: Create Controller
 **Why?** → To separate business logic from route definitions
 ```javascript
-export const createUser = async (req, res) => {
+export const createProduct = async (req, res) => {
   try {
-    const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
+    const newproduct = await product.create(req.body);
+    res.status(201).json(newproduct);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -155,26 +155,26 @@ export const createUser = async (req, res) => {
 **Why?** → Routes handle endpoints and link to controllers
 ```javascript
 import express from "express";
-import { createUser } from "../controllers/userController.js";
+import { createProduct } from "../controllers/productController.js";
 
 const router = express.Router();
-router.post("/register", createUser);
+router.post("/createProduct", createProduct);
 
 export default router;
 ```
 
-### 🔹 Step 4: Connect Everything in server.js
+### 🔹 Step 4: Connect Everything in index.js
 ```javascript
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import userRoutes from "./routes/userRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => app.listen(process.env.PORT, () => 
