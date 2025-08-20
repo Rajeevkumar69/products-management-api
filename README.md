@@ -4,7 +4,7 @@ A complete step-by-step professional guide to learn and build REST APIs using No
 
 ---
 
-## 📖 Core Concepts & Why They Matter
+## Core Concepts & Why They Matter
 
 ### 🔹 **Node.js**
 - Runs JavaScript on the server
@@ -25,25 +25,24 @@ A complete step-by-step professional guide to learn and build REST APIs using No
 
 ---
 
-## 📂 Project Structure & Why It Matters
+## Project Structure & Why It Matters
 
 A clean folder structure makes APIs scalable, testable, and readable:
 
 ```
 project-root/
-│── server.js          # Main entry point
+│── index.js           # Main entry point
 │── .env               # Environment variables
 │── package.json       # Dependencies
-│── /config            # Database & environment config
 │── /models            # MongoDB schemas
 │── /controllers       # Business logic
 │── /routes            # Route definitions
-│── /middleware        # Authentication, error handling
+│── /schma             # Code organization
 ```
 
 ---
 
-## 🧩 Understanding Each Layer
+## Understanding Each Layer
 
 ### 🔹 **Model (Schema)**
 - Defines the shape of data stored in MongoDB
@@ -65,7 +64,7 @@ project-root/
 
 ---
 
-## 📦 Packages & Their Purpose
+## Packages & Their Purpose
 
 | Package | Why Use It |
 |---------|------------|
@@ -74,38 +73,37 @@ project-root/
 | dotenv | Stores secrets like DB connection & PORT |
 | nodemon | Restarts server automatically in development |
 | cors | Allows cross-origin API requests |
-| body-parser | Parses incoming JSON request body |
 
 ---
 
-## ⚡ Setup & Installation
+## Setup & Installation
 
-### 1️⃣ Clone Repository
+### Clone Repository
 ```bash
 git clone <repository-url>
 cd project-folder
 ```
 
-### 2️⃣ Install Dependencies
+### Install Dependencies
 ```bash
 npm install
 ```
 
-### 3️⃣ Environment Setup
+### Environment Setup
 Create a `.env` file:
 ```
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/myDB
 ```
 
-### 4️⃣ Run Project
+### Run Project
 ```bash
-npm run dev
+nodemon index.js 4800
 ```
 
 ---
 
-## 📥 Import Styles
+## Import Styles
 
 There are two ways to import packages in Node.js:
 
@@ -124,7 +122,7 @@ import express from "express";
 
 ---
 
-## 🛠️ API Development Workflow
+## API Development Workflow
 
 ### 🔹 Step 1: Define Schema (Model)
 **Why?** → To enforce data consistency
@@ -186,7 +184,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 ---
 
-## 🔍 Debugging the Right Way
+## Debugging the Right Way
 
 - **Console Logs** → Quick check for request body & DB responses
 - **nodemon** → Restarts server automatically on save
