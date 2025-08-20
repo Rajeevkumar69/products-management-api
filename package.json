@@ -1,0 +1,20 @@
+{
+  "name": "products-management-api",
+  "version": "1.0.0",
+  "description": "A production-ready Node.js and Express REST API with MongoDB, implementing full CRUD operations, modular route-controller-model structure, and best practices for building scalable backend services.",
+  "homepage": "https://github.com/Rajeevkumar69/products-management-api#readme",
+  "bugs": {
+    "url": "https://github.com/Rajeevkumar69/products-management-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rajeevkumar69/products-management-api.git"
+  },
+  "license": "ISC",
+  "author": "rajeev",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
